@@ -1,0 +1,950 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --background: #f8fafc;
+    --card-background: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 0.75rem;
+    --accent-color: #f97316;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --gradient-primary: linear-gradient(135deg, #6366f1, #4f46e5);
+    --gradient-accent: linear-gradient(135deg, #f97316, #fb923c);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.5;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1.2s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    animation: pulse 15s infinite;
+    pointer-events: none;
+  }
+  
+  .logo {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: float 4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  
+  .logo svg {
+    transition: all 0.5s ease;
+  }
+  
+  .logo:hover svg {
+    transform: rotate(15deg) scale(1.1);
+    filter: drop-shadow(0 8px 12px rgba(37, 99, 235, 0.3));
+  }
+  
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(5deg);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Add these new animations */
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes jello {
+    0%,
+    11.1%,
+    100% {
+      transform: none;
+    }
+    22.2% {
+      transform: skewX(-12.5deg) skewY(-12.5deg);
+    }
+    33.3% {
+      transform: skewX(6.25deg) skewY(6.25deg);
+    }
+    44.4% {
+      transform: skewX(-3.125deg) skewY(-3.125deg);
+    }
+    55.5% {
+      transform: skewX(1.5625deg) skewY(1.5625deg);
+    }
+    66.6% {
+      transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    }
+    77.7% {
+      transform: skewX(0.390625deg) skewY(0.390625deg);
+    }
+    88.8% {
+      transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    }
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: scaleIn 0.7s ease-out;
+    font-weight: 700;
+  }
+  
+  header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInDown 0.7s ease-out 0.3s both;
+  }
+  
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    animation: fadeInDown 0.7s ease-out 0.5s both;
+  }
+  
+  @media (min-width: 768px) {
+    main {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .expense-form {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .expense-form:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .expense-form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-primary);
+    background-size: 200% 100%;
+    animation: shimmer 4s infinite linear;
+  }
+  
+  .expense-form h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards;
+  }
+  
+  .form-group:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  
+  .form-group:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .form-group:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .form-group:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    background-color: rgba(249, 250, 251, 0.8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  input:focus,
+  select {
+    transform: scale(1.02);
+  }
+  
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    background-color: white;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeInUp 0.5s 0.5s forwards;
+    opacity: 0;
+  }
+  
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-accent);
+    transition: all 0.4s ease;
+    z-index: -1;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+  }
+  
+  .btn-primary:hover::before {
+    left: 0;
+  }
+  
+  .btn-primary:active {
+    transform: translateY(1px) scale(0.98);
+  }
+  
+  .btn-primary svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-primary:hover svg {
+    transform: rotate(90deg);
+  }
+  
+  .month-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: fadeInDown 0.7s ease-out;
+    transition: all 0.3s ease;
+  }
+  
+  .month-selector:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .month-selector h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  .btn-icon {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .btn-icon:hover {
+    transform: scale(1.2);
+    background-color: rgba(99, 102, 241, 0.15);
+    color: var(--primary-color);
+  }
+  
+  .btn-icon:active {
+    transform: scale(0.9);
+  }
+  
+  .month-total {
+    background: var(--gradient-primary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-lg);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite, fadeInDown 0.7s ease-out;
+  }
+  
+  .month-total::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+  }
+  
+  .month-total::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: rotate(30deg);
+    animation: shimmer 8s infinite linear;
+    pointer-events: none;
+  }
+  
+  #monthTotal {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+  
+  .expense-item {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .expense-item:nth-child(odd) {
+    animation: slideIn 0.5s ease-out forwards;
+  }
+  
+  .expense-item:nth-child(even) {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+  
+  .expense-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary-color);
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+  
+  .expense-item:hover {
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .expense-item:hover::before {
+    opacity: 1;
+    width: 8px;
+  }
+  
+  .expense-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+  }
+  
+  .expense-category {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .expense-item:hover .expense-category {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .expense-date {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+  }
+  
+  .expense-amount {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 1.25rem;
+    background: linear-gradient(135deg, var(--accent-color), #fb923c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .expense-item:hover .expense-amount {
+    transform: scale(1.1);
+  }
+  
+  .expense-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .btn-edit,
+  .btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0.7;
+  }
+  
+  .expense-item:hover .btn-edit,
+  .expense-item:hover .btn-delete {
+    opacity: 1;
+  }
+  
+  .btn-edit {
+    color: var(--primary-color);
+  }
+  
+  .btn-delete {
+    color: var(--danger-color);
+  }
+  
+  .btn-edit:hover,
+  .btn-delete:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-edit:active,
+  .btn-delete:active {
+    transform: scale(0.9);
+  }
+  
+  .btn-edit svg,
+  .btn-delete svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-edit:hover svg {
+    transform: rotate(15deg);
+  }
+  
+  .btn-delete:hover svg {
+    transform: rotate(-15deg);
+  }
+  
+  .btn-edit:hover,
+  .btn-delete:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .expenses-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  }
+  
+  .expenses-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .expenses-container::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: 3px;
+  }
+  
+  .expenses-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+  
+  .expenses-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+  }
+  
+  /* Input focus styles */
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    background-color: white;
+  }
+  
+  /* Category-specific colors */
+  .expense-category[data-category="Food & Dining"] {
+    background: rgba(249, 115, 22, 0.1);
+    color: #c2410c;
+  }
+  
+  .expense-category[data-category="Transportation"] {
+    background: rgba(14, 165, 233, 0.1);
+    color: #0369a1;
+  }
+  
+  .expense-category[data-category="Shopping"] {
+    background: rgba(168, 85, 247, 0.1);
+    color: #7e22ce;
+  }
+  
+  .expense-category[data-category="Entertainment"] {
+    background: rgba(236, 72, 153, 0.1);
+    color: #be185d;
+  }
+  
+  .expense-category[data-category="Bills & Utilities"] {
+    background: rgba(34, 197, 94, 0.1);
+    color: #15803d;
+  }
+  
+  .expense-category[data-category="Others"] {
+    background: rgba(100, 116, 139, 0.1);
+    color: #475569;
+  }
+  
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .empty-state svg {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    opacity: 0.5;
+    animation: pulse 3s infinite;
+  }
+  
+  /* Custom scrollbar for Firefox */
+  .expenses-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background);
+  }
+  
+  /* Background animation */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%);
+    z-index: -1;
+    animation: shimmer 8s infinite linear;
+    background-size: 200% 100%;
+  }
+  
+  /* Add animation for form submission success */
+  @keyframes success-animation {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .success-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--success-color);
+    color: white;
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: success-animation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, fadeInUp 0.5s 2.5s reverse
+      forwards;
+  }
+  
+  /* Add animation for category badges */
+  .expense-category {
+    transition: all 0.3s ease;
+  }
+  
+  /* Add these new CSS classes at the end of the file */
+  
+  /* Animation for changing months */
+  .changing-month {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+  }
+  
+  /* Animation for form focus */
+  .input-focused {
+    transform: translateY(-2px);
+  }
+  
+  /* Animation for form highlight when editing */
+  .highlight-form {
+    animation: jello 1s;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3), 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Animation for deleting expenses */
+  .deleting {
+    animation: fadeInUp 0.3s reverse forwards;
+  }
+  
+  /* Animation for updating total */
+  .updating {
+    animation: pulse 0.3s;
+  }
+  
+  /* Six month summary popup */
+  .summary-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeInUp 0.5s;
+  }
+  
+  .summary-popup.closing {
+    animation: fadeInUp 0.5s reverse forwards;
+  }
+  
+  .summary-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: scaleIn 0.5s 0.2s both;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .summary-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-primary);
+  }
+  
+  .summary-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .summary-amount {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse 2s infinite;
+  }
+  
+  .summary-close {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .summary-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
+  
+  /* Add floating particles in the background */
+  @keyframes float-particle {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-100vh) translateX(100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  .container::before {
+    content: "";
+    position: fixed;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0, transparent 15px),
+      radial-gradient(circle at 80% 40%, rgba(249, 115, 22, 0.1) 0, transparent 15px),
+      radial-gradient(circle at 40% 60%, rgba(99, 102, 241, 0.1) 0, transparent 20px),
+      radial-gradient(circle at 60% 30%, rgba(249, 115, 22, 0.1) 0, transparent 25px),
+      radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.1) 0, transparent 15px),
+      radial-gradient(circle at 70% 70%, rgba(249, 115, 22, 0.1) 0, transparent 20px);
+    z-index: -1;
+    animation: float-particle 15s linear infinite;
+    pointer-events: none;
+  }
+  
+  /* Add animated gradient border to expense items */
+  .expense-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: linear-gradient(45deg, transparent 50%, rgba(99, 102, 241, 0.3), transparent 50%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-size: 300% 300%;
+    animation: shimmer 3s infinite linear;
+  }
+  
+  .expense-item:hover::after {
+    opacity: 1;
+  }
+  
+  /* Add animated cursor effect for inputs */
+  input:focus,
+  select:focus {
+    cursor: text;
+    background-image: linear-gradient(to right, rgba(99, 102, 241, 0.1) 0%, transparent 5%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
